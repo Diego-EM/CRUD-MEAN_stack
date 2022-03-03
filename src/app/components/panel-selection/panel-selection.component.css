@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 17px;
+}
+
+.animal{
+    display: grid;
+    justify-content: space-between;
+    padding: 0 50px;
+    align-items: center;
+    grid-template-columns: repeat(5, min-content);
+    background-image: linear-gradient(to bottom, #1c1c1c, #1d1d1d, #1e1e1e, #202020, #212121);
+    border: 1px solid #d8d8d8;
+}
+
+.animal div{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    padding: 2px;
+    text-align: center;
+}
+
+.type{
+    font-size: 1.6em;
+}
+
+.options{
+    filter: invert(1);
+}
+
+.options div{
+    width: 25px;
+    margin: 0 10px;
+}
+
+.options div img{
+    object-fit: contain;
+    width: 100%;
+}
+
+.options div img:hover{
+    cursor: pointer;
+}

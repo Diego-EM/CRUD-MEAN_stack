@@ -1,0 +1,14 @@
+<div class="animal">
+    <div>{{name}}</div>
+    <div>{{color}}</div>
+    <div>{{age + 'yo'}}</div>
+    <div class="type">{{(type === "dog")? "🐶" : "🐱"}}</div>
+    <div class="options">
+        <div (click)="editAnimal()">
+            <img src="../assets/edit_ico.svg" alt="update" title="Edit pet">
+        </div>
+        <div (click)="deleteAnimal()">
+            <img src="../assets/delete_ico.svg" alt="delete" title="Delete pet">
+        </div>
+    </div>
+</div>

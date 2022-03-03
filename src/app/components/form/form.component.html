@@ -1,0 +1,13 @@
+<form #petForm="ngForm" (ngSubmit)="savePet(petForm)">
+        <input type="text" name="name" id="name" minlength="1" maxlength="35" #name="ngModel" [(ngModel)]="connect.selectedAnimal.name" [class.error]="name.invalid">
+    <div class="form-section">
+            <input type="text" name="color" id="color" minlength="3" maxlength="15" #color="ngModel" [(ngModel)]="connect.selectedAnimal.color">
+            <input type="number" min="1" max="20" name="age" id="age" #age="ngModel" [(ngModel)]="connect.selectedAnimal.age">
+    </div>
+        <select name="type" #type="ngModel" [(ngModel)]="connect.selectedAnimal.type">
+            <option value="" selected disabled hidden>--Select pet--</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+        </select>
+    <button type="submit" class="submit">Save pet</button>
+</form>
