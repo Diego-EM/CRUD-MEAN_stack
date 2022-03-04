@@ -9,13 +9,14 @@ import { ApiConnectService } from './services/api-connect.service';
 })
 export class AppComponent {
 
-  selectedAnimal: Animal ={
+  selectedAnimal: Animal = {
     _id: "",
     name: "",
     age: 0,
     color: "",
     type: ""
   };
+  clearAnimal: Animal = this.selectedAnimal;
   animals: any[] = [];
 
   constructor(private connect: ApiConnectService){}
@@ -28,11 +29,12 @@ export class AppComponent {
       })
   }
 
-  selectPet(data: any){this.selectedAnimal = data }
+  selectPet(data: any){ this.selectedAnimal = data }
 
   getPet(data: any){
     const index = this.animals.findIndex((animal) => animal._id === data.pet._id);
     (index >= 0) ? this.animals[index] = data.pet : this.animals.push(data.pet);
+    this.selectedAnimal = this.clearAnimal;
   }
 
   deletePet(data: any){
