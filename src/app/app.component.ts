@@ -14,7 +14,7 @@ export class AppComponent {
   selectedAnimal: Animal = {
     _id: "",
     name: "",
-    age: 0,
+    age: 1,
     color: "",
     type: ""
   };
@@ -36,7 +36,7 @@ export class AppComponent {
   getPet(data: any){
     const index = this.animals.findIndex((animal) => animal._id === data.pet._id);
     (index >= 0) ? this.animals[index] = data.pet : this.animals.push(data.pet);
-    this.selectedAnimal = this.clearAnimal;
+    this.clearData();
     this.showToast(data.status);
   }
 
@@ -45,6 +45,8 @@ export class AppComponent {
     this.animals.splice(index, 1);
     this.showToast(data.response.status);
   }
+
+  clearData(){ this.selectedAnimal = this.clearAnimal }
 
   showToast(message: string){
     this.actionMessage = message;

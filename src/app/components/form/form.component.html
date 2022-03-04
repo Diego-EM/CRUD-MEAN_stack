@@ -44,7 +44,10 @@
             <option value="Cat">Cat</option>
         </select>
     <button type="submit"
-    class="submit"
+    [ngClass]="(id) ? 'update' : 'submit'"
     [disabled]="petForm.invalid"
-    [class.disabled]="petForm.invalid">Save pet</button>
+    [class.disabled]="petForm.invalid">{{(id) ? 'Update pet' : 'Save pet'}}</button>
+    <button *ngIf="id"
+    class="cancel"
+    (click)="cancelUpdate()">Cancel</button>
 </form>

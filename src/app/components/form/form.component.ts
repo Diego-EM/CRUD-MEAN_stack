@@ -17,13 +17,14 @@ export class FormComponent implements OnInit {
   @Input() age: number|undefined;
   @Input() type: string|undefined;
   @Output() ApiResponse: EventEmitter<any> = new EventEmitter();
+  @Output() CancelUpdate: EventEmitter<any> = new EventEmitter();
   petForm!: FormGroup;
 
   constructor(public connect: ApiConnectService) { }
 
   ngOnInit(): void {
     this.petForm = new FormGroup({
-      name: new FormControl(this.name, [Validators.required, Validators.minLength(1), Validators.maxLength(35), Validators.pattern(/^(\w+\s?){1,35}$/i)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(35), Validators.pattern(/^(\w+\s?){1,35}$/i)]),
       color: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(6), Validators.pattern(/^\w{1,10}$/i)]),
       age: new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]),
       type: new FormControl('', [Validators.required, Validators.pattern(/(dog|cat)/i)]),
@@ -49,16 +50,20 @@ export class FormComponent implements OnInit {
         });
     } else {
       this.connect.addAnimal(this.petForm.value)
-      .subscribe((response) => {
-        this.ApiResponse.emit(response);
-      });
+        .subscribe((response) => {
+          this.ApiResponse.emit(response);
+        });
     }
-    this.resetForm(this.petForm);
-    this.id = undefined;
+    this.clearForm();
   }
 
-  resetForm(form: FormGroup){
-    form.reset();
-    this.connect.selectedAnimal = new Animal();
+  cancelUpdate(){
+    this.clearForm();
+    this.CancelUpdate.emit();
+  }
+
+  clearForm(){
+    this.id = undefined;
+    this.petForm.reset()
   }
 }

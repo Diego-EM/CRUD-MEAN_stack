@@ -6,6 +6,7 @@
     <div class="toast" *ngIf="toastVisible">{{actionMessage}}</div>
     <app-form class="pet-form"
     (ApiResponse)="getPet($event)"
+    (CancelUpdate)="clearData()"
     [id]="selectedAnimal._id"
     [name]="selectedAnimal.name"
     [age]="selectedAnimal.age"
