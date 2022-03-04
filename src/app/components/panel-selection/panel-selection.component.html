@@ -2,7 +2,7 @@
     <div>{{name}}</div>
     <div>{{color}}</div>
     <div>{{age + 'yo'}}</div>
-    <div class="type">{{(type === "dog")? "🐶" : "🐱"}}</div>
+    <div class="type">{{(type === "Dog" || type === "dog")? "🐶" : "🐱"}}</div>
     <div class="options">
         <div (click)="editAnimal()">
             <img src="../assets/edit_ico.svg" alt="update" title="Edit pet">

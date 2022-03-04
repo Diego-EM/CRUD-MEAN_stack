@@ -24,6 +24,15 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 1000px) {
+    .animal{
+        padding: 0 15px;
+    }
+    .animal div{
+        padding: 0;
+    }
+}
+
 .type{
     font-size: 1.6em;
 }

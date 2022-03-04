@@ -9,6 +9,13 @@ import { ApiConnectService } from './services/api-connect.service';
 })
 export class AppComponent {
 
+  selectedAnimal: Animal ={
+    _id: "",
+    name: "",
+    age: 0,
+    color: "",
+    type: ""
+  };
   animals: any[] = [];
 
   constructor(private connect: ApiConnectService){}
@@ -19,5 +26,17 @@ export class AppComponent {
         this.connect.selectedAnimal = response as Animal;
         this.animals = this.animals.concat(this.connect.selectedAnimal);
       })
+  }
+
+  selectPet(data: any){this.selectedAnimal = data }
+
+  getPet(data: any){
+    const index = this.animals.findIndex((animal) => animal._id === data.pet._id);
+    (index >= 0) ? this.animals[index] = data.pet : this.animals.push(data.pet);
+  }
+
+  deletePet(data: any){
+    const index = this.animals.findIndex((animal) => animal._id === data.id);
+    this.animals.splice(index, 1);
   }
 }

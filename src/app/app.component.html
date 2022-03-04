@@ -1,8 +1,26 @@
-<h1>Animals registration</h1>
+<header>
+    <h1>Pet registration</h1>
+</header>
 
 <div class="container">
-    <app-form class="pet-form"></app-form>
+    <app-form class="pet-form"
+    (ApiResponse)="getPet($event)"
+    [id]="selectedAnimal._id"
+    [name]="selectedAnimal.name"
+    [age]="selectedAnimal.age"
+    [type]="selectedAnimal.type"
+    [color]="selectedAnimal.color"
+    ></app-form>
     <div class="panel">
-        <app-panel-selection *ngFor="let animal of animals" [id]="animal.id" [name]="animal.name" [age]="animal.age" [type]="animal.type" [color]="animal.color"></app-panel-selection>
+        <app-panel-selection
+        *ngFor="let animal of animals"
+        [id]="animal._id"
+        [name]="animal.name"
+        [age]="animal.age"
+        [type]="animal.type"
+        [color]="animal.color"
+        (ApiResponse)="deletePet($event)"
+        (PetUpdate)="selectPet($event)"
+        ></app-panel-selection>
     </div>
 </div>

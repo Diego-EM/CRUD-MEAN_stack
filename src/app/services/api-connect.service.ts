@@ -25,8 +25,8 @@ export class ApiConnectService {
     return this.http.post(this.API_url,animal);
   }
 
-  updateAnimal(animal: Animal){
-    return this.http.put(`${this.API_url}/${animal._id}`,animal);
+  updateAnimal(animal: Animal, id?: string){
+    return this.http.put(`${this.API_url}/${(id)? id : animal._id}`,animal);
   }
 
   deleteAnimal(_id: String){

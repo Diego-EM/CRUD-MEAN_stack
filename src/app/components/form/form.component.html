@@ -1,13 +1,50 @@
-<form #petForm="ngForm" (ngSubmit)="savePet(petForm)">
-        <input type="text" name="name" id="name" minlength="1" maxlength="35" #name="ngModel" [(ngModel)]="connect.selectedAnimal.name" [class.error]="name.invalid">
+<form novalidate [formGroup]="petForm" (ngSubmit)="savePet()">
+        <h2>Register your pet</h2>
+        <label for="name">Name:</label>
+        <input type="text"
+        minlength="1"
+        maxlength="35"
+        formControlName="name"
+        [class.error]="petForm.get('name')!.invalid && petForm.get('name')!.touched"
+        >
     <div class="form-section">
-            <input type="text" name="color" id="color" minlength="3" maxlength="15" #color="ngModel" [(ngModel)]="connect.selectedAnimal.color">
-            <input type="number" min="1" max="20" name="age" id="age" #age="ngModel" [(ngModel)]="connect.selectedAnimal.age">
+            <div>
+                <label for="color">Color:</label>
+                <select type="text"
+                id="color"
+                minlength="3"
+                maxlength="15"
+                formControlName="color"
+                [class.error]="petForm.get('color')!.invalid && petForm.get('color')!.touched"
+                >
+                    <option value="" selected disabled hidden>Select Color</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Gray">Gray</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number"
+                min="1"
+                max="20"
+                id="age"
+                formControlName="age"
+                [class.error]="petForm.get('age')!.invalid && petForm.get('age')!.touched">
+            </div>
     </div>
-        <select name="type" #type="ngModel" [(ngModel)]="connect.selectedAnimal.type">
-            <option value="" selected disabled hidden>--Select pet--</option>
+        <label for="type">Specie:</label>
+        <select formControlName="type"
+        [class.error]="petForm.get('type')!.invalid && petForm.get('type')!.touched">
+            <option value="" selected disabled hidden>Select pet</option>
             <option value="Dog">Dog</option>
             <option value="Cat">Cat</option>
         </select>
-    <button type="submit" class="submit">Save pet</button>
+    <button type="submit"
+    class="submit"
+    [disabled]="petForm.invalid"
+    [class.disabled]="petForm.invalid">Save pet</button>
 </form>
