@@ -9,6 +9,8 @@ import { ApiConnectService } from './services/api-connect.service';
 })
 export class AppComponent {
 
+  actionMessage: string = "";
+  toastVisible: boolean = false;
   selectedAnimal: Animal = {
     _id: "",
     name: "",
@@ -35,10 +37,20 @@ export class AppComponent {
     const index = this.animals.findIndex((animal) => animal._id === data.pet._id);
     (index >= 0) ? this.animals[index] = data.pet : this.animals.push(data.pet);
     this.selectedAnimal = this.clearAnimal;
+    this.showToast(data.status);
   }
 
   deletePet(data: any){
     const index = this.animals.findIndex((animal) => animal._id === data.id);
     this.animals.splice(index, 1);
+    this.showToast(data.response.status);
+  }
+
+  showToast(message: string){
+    this.actionMessage = message;
+    this.toastVisible = true;
+    setTimeout(()=>{
+      this.toastVisible = false;
+    }, 2500);
   }
 }
