@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Animal } from '../models/animal';
-import { registerLocaleData } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class ApiConnectService {
   }
 
   updateAnimal(animal: Animal, id?: string){
-    return this.http.put(`${this.API_url}/${(id)? id : animal._id}`,animal);
+    return this.http.put(`${this.API_url}/${(id)? id :animal._id}`,animal);
   }
 
   deleteAnimal(_id: String){
