@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Starting the server
+
+Run `npm run dev` to start the comunication with the client side. The app will automatically reload if you change any of the source files
+
+## Preview
+![screen](https://user-images.githubusercontent.com/93296840/156858331-1652abbf-6ec7-43bc-8823-ea291da6f719.png)
+
